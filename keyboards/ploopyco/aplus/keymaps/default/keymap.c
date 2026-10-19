@@ -112,13 +112,28 @@ void pointing_device_gestures_trigger(uint8_t direction) {
             }
             break;
         case 1: /* South-East, Paste. */
-            tap_code16( C(KC_V) );
+            if ( detected_host_os() == OS_WINDOWS || detected_host_os() == OS_LINUX ) {
+                tap_code16( C(KC_V) );
+            }
+            else {
+                tap_code16( LCMD(KC_V) );
+            }
             break;
         case 2: /* South, Copy. */
-            tap_code16( C(KC_C) );
+            if ( detected_host_os() == OS_WINDOWS || detected_host_os() == OS_LINUX ) {
+                tap_code16( C(KC_C) );
+            }
+            else {
+                tap_code16( LCMD(KC_C) );
+            }
             break;
         case 3: /* South-West, Cut. */
-            tap_code16( C(KC_X) );
+            if ( detected_host_os() == OS_WINDOWS || detected_host_os() == OS_LINUX ) {
+                tap_code16( C(KC_X) );
+            }
+            else {
+                tap_code16( LCMD(KC_X) );
+            }
             break;
         case 4: /* West, Previous Virtual Desktop. */
             /* On Windows, send CTRL + LGUI + LEFT. */
@@ -135,7 +150,11 @@ void pointing_device_gestures_trigger(uint8_t direction) {
             }
             break;
         case 5: /* North-West, Undo. */
-            tap_code16( C(KC_Z) );
+            if ( detected_host_os() == OS_WINDOWS || detected_host_os() == OS_LINUX ) {
+                tap_code16( C(KC_Z) );
+            } else {
+                tap_code16( LCMD(KC_Z) );
+            }
             break;
         case 6: /* North, Play/Pause Audio. */
             tap_code16( KC_MEDIA_PLAY_PAUSE );
@@ -147,11 +166,7 @@ void pointing_device_gestures_trigger(uint8_t direction) {
             }
             /* On MacOs, send CMD + SHIFT + Z. */
             else {
-                register_code(KC_LCMD);
-                register_code(KC_LSFT);
-                tap_code(KC_Z);
-                unregister_code(KC_LCMD);
-                unregister_code(KC_LSFT);
+                tap_code16( LSG(KC_Z) );
             }
             break;
         default:
