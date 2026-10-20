@@ -116,7 +116,8 @@ void pointing_device_gestures_trigger(uint8_t direction) {
                 tap_code16( C(KC_V) );
             }
             else {
-                tap_code16( LCMD(KC_V) );
+                /* on macOS, my bindings for tile-right */
+                tap_code16( HYPR(KC_RIGHT) );
             }
             break;
         case 2: /* South, Copy. */
@@ -124,7 +125,8 @@ void pointing_device_gestures_trigger(uint8_t direction) {
                 tap_code16( C(KC_C) );
             }
             else {
-                tap_code16( LCMD(KC_C) );
+                /* on macOS, my bindings for audio select */
+                tap_code16( HYPR(KC_A) );
             }
             break;
         case 3: /* South-West, Cut. */
@@ -132,7 +134,8 @@ void pointing_device_gestures_trigger(uint8_t direction) {
                 tap_code16( C(KC_X) );
             }
             else {
-                tap_code16( LCMD(KC_X) );
+                /* on macOS, my bindings for tile-left */
+                tap_code16( HYPR(KC_LEFT) );
             }
             break;
         case 4: /* West, Previous Virtual Desktop. */
@@ -153,7 +156,8 @@ void pointing_device_gestures_trigger(uint8_t direction) {
             if ( detected_host_os() == OS_WINDOWS || detected_host_os() == OS_LINUX ) {
                 tap_code16( C(KC_Z) );
             } else {
-                tap_code16( LCMD(KC_Z) );
+                /* on macOS, my bindings for full-screen */
+                tap_code16( HYPR(KC_UP) );
             }
             break;
         case 6: /* North, Play/Pause Audio. */
@@ -164,9 +168,9 @@ void pointing_device_gestures_trigger(uint8_t direction) {
             if ( detected_host_os() == OS_WINDOWS || detected_host_os() == OS_LINUX ) {
                 tap_code16( C(KC_Y) );
             }
-            /* On MacOs, send CMD + SHIFT + Z. */
             else {
-                tap_code16( LSG(KC_Z) );
+                /* on macOS, my bindings for expose application */
+                tap_code16( C(KC_DOWN) );
             }
             break;
         default:
